@@ -33,15 +33,19 @@ class Messenger {
     }
 }
 
+function onlySpaces(str) { return str.trim().length === 0; }
+
 let messenger = new Messenger()
 document.querySelector('.btn-send').addEventListener('click', (event) =>
 {
-    let name = document.querySelector('.name').value
     let message = document.querySelector('.message').value
+    if (!(message == '' || onlySpaces(message))){
+    let name = document.querySelector('.name').value
     messenger.send(name, message)
-    document.querySelector('.message').value = ''
+    document.querySelector('.message').value = ''}
 })
 document.querySelector('.btn-show').addEventListener('click', (event) =>
 {
+    document.querySelector('.history').innerHTML = ""
     messenger.show_history()
 })
